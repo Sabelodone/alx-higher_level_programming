@@ -4,5 +4,4 @@ for digit1 in range(0, 10):
         print("{:d}{:d}".format(digit1, digit2), end="")
         if digit1 != 8 or digit2 != 9:
             print(", ", end="")
-print()
 
