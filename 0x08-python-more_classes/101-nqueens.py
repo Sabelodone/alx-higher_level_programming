@@ -2,6 +2,8 @@
 
 import sys
 
+import sys
+
 def is_safe(board, row, col):
     """Check if it's safe to place a queen in a cell."""
     # Check the column
