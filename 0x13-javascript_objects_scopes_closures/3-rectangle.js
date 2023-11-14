@@ -13,11 +13,10 @@ module.exports = class Rectangle {
 
   print() {
     if (this.width === 0 || this.height === 0) {
-      console.log('Empty object');
-    } else {
-      for (let i = 0; i < this.height; i++) {
-        console.log('X'.repeat(this.width));
-      }
+      return;
+    }
+    for (let i = 0; i < this.height; i++) {
+      console.log('X'.repeat(this.width));
     }
   }
 };
