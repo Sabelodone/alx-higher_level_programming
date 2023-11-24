@@ -19,6 +19,10 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State).order_by(State.id).all()
-    for state in states:
-        print(f"{state.id}: {state.name}")
+    query = session.query(State).order_by(State.id).all()
+
+    if query:
+        for state in query:
+            print(f"{state.id}: {state.name}")
+    else:
+        print("No states found.")
