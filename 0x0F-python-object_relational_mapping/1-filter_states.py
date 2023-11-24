@@ -10,18 +10,13 @@ Connects to default host (localhost) and port (3306)
 if __name__ == "__main__":
     from sys import argv
     import MySQLdb
-
-    username = argv[1]
-    password = argv[2]
-    db_name = argv[3]
-
-    try:
-        with MySQLdb.connect(user=username, passwd=password, db=db_name) as db:
-            c = db.cursor()
-            query = """SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"""
-            c.execute(query)
-            rows = c.fetchall()
-            for row in rows:
-                print(row)
-    except MySQLdb.Error as e:
-        print("Error:", e)
+    db = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3])
+    c = db.cursor()
+    c.execute("""SELECT * FROM states WHERE name like "N%"\
+            ORDER BY states.id ASC""")
+    rows = c.fetchall()
+    for row in rows:
+        if row[1][0] == 'N':
+            print(row)
+    c.close()
+    db.close()
