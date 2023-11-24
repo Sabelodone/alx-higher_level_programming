@@ -26,6 +26,7 @@ if __name__ == "__main__":
             c.execute(query)
             rows = c.fetchall()
             for row in rows:
-                print(row)
+                if row[1].startswith('N'):
+                    print(row)
     except MySQLdb.Error as e:
         print("Error:", e)
