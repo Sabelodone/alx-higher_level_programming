@@ -8,7 +8,7 @@ from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
-        print("Usage: ./script_name.py <username> <password> <database_name>")
+        print("Usage: ./7-model_state_fetch_all.py <username> <password> <database_name>")
         sys.exit(1)
 
     username, password, db_name = sys.argv[1], sys.argv[2], sys.argv[3]
@@ -19,10 +19,10 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    query = session.query(State).order_by(State.id).all()
+    states = session.query(State).order_by(State.id).all()
 
-    if query:
-        for state in query:
+    if states:
+        for state in states:
             print(f"{state.id}: {state.name}")
     else:
         print("No states found.")
