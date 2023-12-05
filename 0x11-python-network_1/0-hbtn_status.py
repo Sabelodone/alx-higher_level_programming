@@ -14,7 +14,7 @@ def fetch_data(url):
             print("\t- content: {}".format(body))
             print("\t- utf8 content: {}".format(body.decode('utf-8')))
     except urllib.error.URLError as e:
-        print("Error fetching data: {}".format(e))
+        print("Error fetching data: {}".format(e.reason))
 
 if __name__ == "__main__":
     url = "https://alx-intranet.hbtn.io/status"
